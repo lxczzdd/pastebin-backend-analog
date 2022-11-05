@@ -1,0 +1,4 @@
+app:
+  host: https://super-paste.com
+  public_list_size: 10
+
