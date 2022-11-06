@@ -19,6 +19,9 @@ public class PasteboxRepoHashMap implements PasteboxRepo {
     public PasteboxEntity getByHash(String hash) {
         PasteboxEntity pasteboxEntity = vault.get(hash);
 
+        if(pasteboxEntity.getLifecycle().isBefore(LocalDateTime.now()))
+            pasteboxEntity = null;
+
         if(pasteboxEntity == null) {
             throw new PasteboxNotFoundException("Paste with this hash does not exist = " + hash);
         }
